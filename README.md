@@ -109,7 +109,7 @@ Deleta um automóvel cadastrado no banco de dados conforme o `{id}` passado como
 Atualiza um automóvel já cadastrado em banco de dados. No corpo da mensagem abaixo pode-se alterar os `?` pela informação que se deseja alterar. 
 
 Corpo da mensagem no formato de JSON:
-{
+`{
     "id": ?
     "consumoMedioCidade": ?,
     "consumoMedioRodovia": ?,
@@ -117,7 +117,7 @@ Corpo da mensagem no formato de JSON:
     "marca": "?",
     "modelo": "?",
     "nome": "?"
-}
+}`
 
 #### Cálculo
 
@@ -126,11 +126,23 @@ Corpo da mensagem no formato de JSON:
 Retorna as informações de cálculo com a previsão de gastos. Para a realização do cálculo deve ser passado alguns parâmetros no corpo da mensagem alterando os `?` pela informação que se deseja.
 
 Corpo da mensagem no formato de JSON:
-{
+`{
   "distanciaPercorridaCidade": ?,
   "distanciaPercorridaRodovia": ?,
   "preco": ?
-}
+}`
 
 Os parâmetros de distância devem respeitar até 5 números inteiros e 2 números fracionados. Exemplo: 12345.12.
 O preço conforme os postos de gasolina, devem respeitar até 2 números inteiros e 3 fracionados. 
+
+
+## Relação de frameworks e bibliotecas utilizados no projeto e suas responsabilidades
+
+* Java (12): Plataforma utilizada para desenvolver programas em sua linguagem.
+* Spring Boot (LATEST): Framework base da aplicação para tratamento de solicitações HTTP, comunicação com o banco de 
+dados e demais tarefas comuns. No projeto foi utilizado os componentes Web, DevTools, Test e JPA.
+* H2 Database (LATEST): Motor de banco de dados escrito em Java para rápida prototipação e testes
+* Flyway (LATEST): Controle de versão para o banco de dados, responsável por criar e manter atualizado o banco de dados
+automaticamente (extremamente valioso em ambientes em que há um CI/DevOps bem estruturado).
+* Swagger (LATEST): Estrutura de software de código aberto apoiada por um grande ecossistema de ferramentas que ajuda os desenvolvedores a projetar, criar, documentar e consumir serviços da Web RESTful.
+* Lombok (LASTEST): Biblioteca java que se conecta automaticamente ao editor e cria ferramentas, incrementando e falitando o código java.
