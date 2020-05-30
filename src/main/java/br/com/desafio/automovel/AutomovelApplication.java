@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @EnableAutoConfiguration
-public class DesafioTotvsApplication {
+public class AutomovelApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DesafioTotvsApplication.class, args);
+        SpringApplication.run(AutomovelApplication.class, args);
     }
 
 }
