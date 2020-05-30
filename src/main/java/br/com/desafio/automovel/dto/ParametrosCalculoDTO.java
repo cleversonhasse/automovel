@@ -16,11 +16,11 @@ public class ParametrosCalculoDTO {
     private BigDecimal preco;
 
     @DecimalMin(value = "0.0")
-    @Digits(integer = 2, fraction = 2)
+    @Digits(integer = 5, fraction = 2)
     private BigDecimal distanciaPercorridaCidade;
 
     @DecimalMin(value = "0.0")
-    @Digits(integer = 2, fraction = 2)
+    @Digits(integer = 5, fraction = 2)
     private BigDecimal distanciaPercorridaRodovia;
 
     public static ParametrosCalculoDTO populate(String distanciaPercorridaCidade, String distanciaPercorridaRodovia, String preco) {
