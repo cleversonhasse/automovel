@@ -73,14 +73,64 @@ mvn spring-boot:run
 Opcionalmente também pode-se utilizar qualquer IDE que tenha suporte ao Maven para execução da aplicação, como o 
 IntelliJ IDEA, Eclipse ou NetBeans.
 
-A aplicação irá inicializar automaticamente o banco de dados H2 e popular com alguns registros de exemplo na primeira
-inicialização através do Flyway. Em caso de atualizações futuras a aplicação também irá atualizar o banco de dados
+A aplicação irá inicializar automaticamente o banco de dados H2 e criar a tabela vazia através do Flyway. Em caso de atualizações futuras a aplicação também irá atualizar o banco de dados
 e efetuar todos os tratamentos necessários nos dados automaticamente.
 
-Uma vez em execução a API estará disponível para ser consumida no endereço `http://localhost:8080/rest/calculo-combustivel`. 
+Uma vez em execução a API estará disponível para ser consumida no endereço `http://localhost:8080/rest/automovel`. 
 Para facilitar os testes recomendo o uso do aplicativo Postman (disponível em `getpostman.com`).
 
-O log da aplicação pode ser consultado diretamente pelo console ou através do arquivo `desafiototvs.log` na raiz 
-do projeto ou caminho de execução.
+Após subir o sistema, também pode ser utilizado o Swagger, ele fornece um resumo interativo da API. 
+Ele pode ser acessado pelo link: `http://localhost:8080/swagger-ui.html`.
 
+### Relação de endpoints
 
+#### Criar Automóvel
+
+``POST http://localhost:8080/rest/automovel``
+
+Criação de novo automóvel e inserção no banco de dados. 
+
+#### Buscar Todos os Automóveis
+
+``GET http://localhost:8080/rest/automovel``
+
+Busca todos os automóveis cadastrados no banco de dados.
+
+#### Deletar Automóvel
+
+``DELETE http://localhost:8080/rest/automovel/{id}``
+
+Deleta um automóvel cadastrado no banco de dados conforme o `{id}` passado como parâmetro.
+
+#### Atualizar Automóvel
+
+``PUT http://localhost:8080/rest/automovel``
+
+Atualiza um automóvel já cadastrado em banco de dados. No corpo da mensagem abaixo pode-se alterar os `?` pela informação que se deseja alterar. 
+
+Corpo da mensagem no formato de JSON:
+{
+    "id": ?
+    "consumoMedioCidade": ?,
+    "consumoMedioRodovia": ?,
+    "dataFabricacao": "?",
+    "marca": "?",
+    "modelo": "?",
+    "nome": "?"
+}
+
+#### Cálculo
+
+``GET http://localhost:8080/rest/automovel/calculo``
+
+Retorna as informações de cálculo com a previsão de gastos. Para a realização do cálculo deve ser passado alguns parâmetros no corpo da mensagem alterando os `?` pela informação que se deseja.
+
+Corpo da mensagem no formato de JSON:
+{
+  "distanciaPercorridaCidade": ?,
+  "distanciaPercorridaRodovia": ?,
+  "preco": ?
+}
+
+Os parâmetros de distância devem respeitar até 5 números inteiros e 2 números fracionados. Exemplo: 12345.12.
+O preço conforme os postos de gasolina, devem respeitar até 2 números inteiros e 3 fracionados. 
